@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+	<title>Insert title here</title>
 </head>
+
 <body>
-	<h1>I Migliori film sono:</h1>
-	<p>[[${movieTitles}]]</p>
+	<div class="container">
+		<h1>I Migliori film sono:</h1>
+		<ul>
+			<li th:each="movie : ${bestMovies}">[[${movie.title}]]<a th:replace="fragments :: link(@{/movies/{id}(id=${movie.id})} , 'Dettagli')"></a></li>
+		</ul>
+		<a th:replace="fragments :: link (@{/},'Home Page')"></a>
+	</div>
 </body>
+
 </html>

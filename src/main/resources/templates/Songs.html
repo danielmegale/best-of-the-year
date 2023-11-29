@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="container">		
 	<h1>Le Migliori Canzoni sono:</h1>
-	<p>[[${songTitles}]]</p>
+	<ul>
+		<li th:each="song : ${bestSongs}">[[${song.title}]]<a th:replace="fragments :: link(@{/songs/{id} (id=${song.id})} , 'Dettagli')"></a></li>
+	</ul>
+	<a th:replace="fragments :: link(@{/} , 'Home Page')"></a>
+	</div>
 </body>
 </html>

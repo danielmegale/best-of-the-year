@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+	<title>Insert title here</title>
 </head>
-<body style="background-color: darkslategrey;">
-	<h1>Best of the year by [[${nome}]]</h1>
+
+<body style="background-color: darkslategrey;color: white;">
+	<div class="container">
+		<h1>Best of the year by [[${nome}]]</h1>
+		<div>
+			<a th:replace="fragments :: link (@{/movies},'Film')"></a>
+			<a th:replace="fragments :: link (@{/songs},'Canzoni')"></a>
+		</div>
+	</div>
 </body>
+
 </html>

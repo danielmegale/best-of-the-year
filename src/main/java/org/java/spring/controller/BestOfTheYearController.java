@@ -23,22 +23,14 @@ public class BestOfTheYearController {
 	@GetMapping("/movies")
 	public String movies(Model model) {
 		List<Movie> bestMovies = getBestMovies();
-		String movieTitles = "";
-		for (Movie movie : bestMovies) {
-			movieTitles += movie.getTitle() + ", ";
-		}
-		model.addAttribute("movieTitles", movieTitles);
+		model.addAttribute("bestMovies", bestMovies);
 		return "Movies";
 	}
 
 	@GetMapping("/songs")
 	public String songs(Model model) {
 		List<Song> bestSongs = getBestSongs();
-		String songTitles = "";
-		for (Song song : bestSongs) {
-			songTitles += song.getTitle() + ", ";
-		}
-		model.addAttribute("songTitles", songTitles);
+		model.addAttribute("bestSongs", bestSongs);
 		return "Songs";
 	}
 
